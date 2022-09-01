@@ -10,7 +10,9 @@ def get_user(id):
 
 def get_user_by_name(name):
     user = db.get_user_by_name(name)
-    return User(user['_id'], user['name'], user['password'])
+    if not user is None:
+        return User(user['_id'], user['name'], user['password'])
+    return None
 
 def create_user(name, password):
     return db.create_user(name, generate_password_hash(password))
