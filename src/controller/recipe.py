@@ -14,4 +14,9 @@ def recipes():
 def recipe(recipe_id):
     return jsonify(json.loads(recipe_service.get_recipe(recipe_id)))
 
+@bp.route('/add', methods=['POST'])
+def add_recipe():
+    body = request.get_json()
+    return jsonify(json.loads(recipe_service.add_recipe(body)))
+
 

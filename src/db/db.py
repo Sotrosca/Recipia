@@ -23,6 +23,10 @@ def get_recipe_name(recipe_name):
     recipe = db.recipes.find_one({'name': recipe_name})
     return recipe
 
+def add_recipe(recipe):
+    recipe = db.recipes.insert_one(recipe)
+    return recipe.inserted_id
+
 def get_user(id):
     user = db.users.find_one({'_id': ObjectId(id)})
     return user
